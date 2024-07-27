@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 import actionRoutes from "./routes/actionRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/session", sessionRoutes);
 app.use("/action", actionRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 app.listen(port, (err) => {
   if (err) {
