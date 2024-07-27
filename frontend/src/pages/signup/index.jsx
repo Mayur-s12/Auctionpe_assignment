@@ -15,13 +15,13 @@ const SignupPage = () => {
       <form className='login-form' onSubmit={handleFormSubmit}>
         <Text className='login-heading'>{SIGNUP}</Text>
         <Input
-          label='username'
+          label='Username'
           name='username'
           onChange={handleInputChange}
           value={signUpDetails.username}
         />
         <Input
-          label='password'
+          label='Password'
           name='password'
           onChange={handleInputChange}
           value={signUpDetails.password}

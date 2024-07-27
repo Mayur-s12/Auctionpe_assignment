@@ -10,18 +10,19 @@ import "./index.css";
 
 const LoginPage = () => {
   const { handleFormSubmit, handleInputChange, loginDetails } = useLogin();
+
   return (
     <div className='login-page'>
       <form className='login-form' onSubmit={handleFormSubmit}>
         <Text className='login-heading'>{LOGIN}</Text>
         <Input
-          label='username'
+          label='Username'
           name='username'
           onChange={handleInputChange}
           value={loginDetails.username}
         />
         <Input
-          label='password'
+          label='Password'
           name='password'
           onChange={handleInputChange}
           value={loginDetails.password}
