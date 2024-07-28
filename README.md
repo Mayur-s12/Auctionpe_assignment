@@ -1,6 +1,6 @@
 ## Table of Contents
 1. Setup Instructions
-2. SQL Script--(refer file setup.sql)
+2. SQL Script--(refer file setup.sql in backend)
 3. Design Decisions
 
 ## Setup Instructions
@@ -28,7 +28,7 @@ DB_NAME=auctionpe_db
 JWT_SECRET_KEY=my-secret-key
 
 4.SQL Script:
-refer the "setup.sql" file given in code.
+refer the "setup.sql" file given in backend.
 
 5.Start the Server
 npm start
