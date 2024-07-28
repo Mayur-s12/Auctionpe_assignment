@@ -1,5 +1,6 @@
 .button-class {
   background-color: var(--primary-color);
+  cursor: pointer;
   width: 80%;
   margin-top: 20px;
   border-radius: 10px;

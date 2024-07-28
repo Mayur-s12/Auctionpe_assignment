@@ -12,6 +12,7 @@ const App = () => {
         <Route path='/signup' element={<SignupPage />} />
         <Route element={<ProtectedRoutes />}>
           <Route path='/' element={<Home />} />
+          <Route path='/user-dashboard' element={<Home />} />
         </Route>
       </Routes>
     </Router>
