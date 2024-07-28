@@ -5,6 +5,11 @@ import Text from "../../components/Text/index.jsx";
 import { END, START } from "./constants";
 import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 import "./index.css";
+import ToggleButton from "./toggle-button/index.jsx";
+import SearchInput from "./search-action/index.jsx";
+import Counter from "./counter/index.jsx";
+import Slider from "./slider/index.jsx";
+import Selector from "./selector/index.jsx";
 
 const Home = () => {
   const [isSessionStarted, setIsSessionStarted] = useState(false);
@@ -48,6 +53,14 @@ const Home = () => {
           <Text className='text-color'>{formatTimer(timer)}</Text>
           <AccessAlarmsIcon />
         </div>
+      </div>
+      <Text className='item-text'>Action Items</Text>
+      <div className='display-action-items'>
+        <ToggleButton isSessionStarted={isSessionStarted} />
+        <SearchInput isSessionStarted={isSessionStarted} />
+        <Counter isSessionStarted={isSessionStarted} />
+        <Slider isSessionStarted={isSessionStarted} />
+        <Selector isSessionStarted={isSessionStarted} />
       </div>
     </div>
   );

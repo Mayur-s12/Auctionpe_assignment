@@ -1,0 +1,28 @@
+.inactive-counter {
+  background-color: grey !important;
+  border-radius: 10px;
+  display: flex;
+  height: 50px;
+  column-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  flex: 2;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.active-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  flex: 2;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.counter-button {
+  height: 40px;
+  width: 40px;
+}

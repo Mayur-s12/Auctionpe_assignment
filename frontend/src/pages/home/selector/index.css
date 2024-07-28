@@ -1,0 +1,15 @@
+.inactive-selector {
+  flex: 1;
+  min-width: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.active-selector {
+  flex: 1;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 200px;
+  box-sizing: border-box;
+}

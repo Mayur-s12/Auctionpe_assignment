@@ -1,0 +1,11 @@
+.search-action-container {
+  display: flex;
+  padding-top: 10px;
+  flex: 2;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.inactive-input {
+  background-color: grey !important;
+}

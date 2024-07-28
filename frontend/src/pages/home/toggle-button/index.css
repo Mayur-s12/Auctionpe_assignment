@@ -1,0 +1,12 @@
+.inactive-button {
+  background-color: grey !important;
+  flex: 2;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.active-button {
+  flex: 2;
+  min-width: 200px;
+  box-sizing: border-box;
+}
