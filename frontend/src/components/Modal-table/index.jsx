@@ -7,8 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Button from "../Button";
-import { Pagination, Stack } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,14 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedTable({
-  rowsData,
-  columns,
-  currentPage,
-  setCurrentPage,
-  pagesCount,
-  onViewClick,
-}) {
+export default function CustomizedModalTable({ rowsData, columns }) {
   return (
     <>
       <TableContainer component={Paper}>
@@ -53,44 +44,19 @@ export default function CustomizedTable({
             {rowsData.map((row, index) => (
               <StyledTableRow key={index}>
                 <StyledTableCell align='center' component='th' scope='row'>
-                  {row.session_id}
+                  {row.action_id}
                 </StyledTableCell>
                 <StyledTableCell align='center'>
-                  {row.start_time}
+                  {row.action_type}
                 </StyledTableCell>
                 <StyledTableCell align='center'>
-                  {row?.end_time}
-                </StyledTableCell>
-                <StyledTableCell align='center'>
-                  {row?.actions?.map((item, index) => (
-                    <React.Fragment key={index}>
-                      {item.action_type}
-                      {index < row.actions.length - 1 && ", "}
-                    </React.Fragment>
-                  ))}
-                </StyledTableCell>
-                <StyledTableCell align='right'>
-                  <Button
-                    style={{ width: "100px" }}
-                    onClick={() => onViewClick(row)}
-                  >
-                    View
-                  </Button>
+                  {row?.action_timestamp}
                 </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <Stack spacing={2} sx={{ margin: 3 }}>
-        <Pagination
-          count={pagesCount}
-          page={currentPage}
-          onChange={(event, page) => setCurrentPage(page)}
-          variant='outlined'
-          shape='rounded'
-        />
-      </Stack>
     </>
   );
 }
