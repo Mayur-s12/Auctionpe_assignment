@@ -4,12 +4,14 @@ import Button from "../../components/Button";
 import { LOGIN, NOT_USER, SIGNUP } from "./constants";
 import Text from "../../components/Text";
 import useLogin from "./hooks";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 const LoginPage = () => {
   const { handleFormSubmit, handleInputChange, loginDetails } = useLogin();
+  const navigate = useNavigate();
 
   return (
     <div className='login-page'>
@@ -18,11 +20,13 @@ const LoginPage = () => {
         <Input
           label='Username'
           name='username'
+          type='text'
           onChange={handleInputChange}
           value={loginDetails.username}
         />
         <Input
           label='Password'
+          type='password'
           name='password'
           onChange={handleInputChange}
           value={loginDetails.password}
@@ -30,7 +34,9 @@ const LoginPage = () => {
         <Button type='submit'>{LOGIN}</Button>
         <Text>
           {NOT_USER}
-          <Text className='signup-span'>{SIGNUP}</Text>
+          <Text className='signup-span' onClick={() => navigate("/signup")}>
+            {SIGNUP}
+          </Text>
         </Text>
       </form>
       <ToastContainer
