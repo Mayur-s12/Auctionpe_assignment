@@ -2,6 +2,9 @@ import pool from "../config/database.js";
 
 export const getDashboardData = async (req, res) => {
   const userId = req.userId;
+  const page = parseInt(req.query.page);
+  const pageSize = parseInt(req.query.pageSize);
+  const offset = (page - 1) * pageSize;
 
   try {
     const getDataQuery = `
@@ -14,10 +17,20 @@ export const getDashboardData = async (req, res) => {
             FROM sessions
             LEFT JOIN actions ON sessions.id = actions.session_id
             WHERE sessions.user_id = ?
-            ORDER BY sessions.start_time DESC, actions.action_timestamp;
+            ORDER BY sessions.start_time DESC, actions.action_timestamp
+            LIMIT ?
+            OFFSET ?;
         `;
 
-    const [result] = await pool.query(getDataQuery, [userId]);
+    const getCount = `
+      SELECT COUNT(*) as total 
+      FROM sessions 
+      WHERE user_id = ?;
+  `;
+
+    const [result] = await pool.query(getDataQuery, [userId, pageSize, offset]);
+    const [countResult] = await pool.query(getCount, [userId]);
+    const total = countResult[0].total;
     const dashboardData = [];
 
     result.forEach((row) => {
@@ -50,7 +63,7 @@ export const getDashboardData = async (req, res) => {
       }
     });
 
-    res.status(200).json({ data: dashboardData });
+    res.status(200).json({ data: dashboardData, count: total });
   } catch (err) {
     console.log("Error fetching Dashboard Data", err);
     res.status(500).json({ message: "Internal Server Error", err });
