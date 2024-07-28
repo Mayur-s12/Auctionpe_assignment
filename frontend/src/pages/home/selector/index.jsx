@@ -1,8 +1,17 @@
 import React from "react";
 import "./index.css";
+import { logAction } from "../../../config/apis";
 
-const Selector = ({ isSessionStarted }) => {
-  const handleChange = (e) => {};
+const Selector = ({ isSessionStarted, sessionId }) => {
+  const handleChange = async (e) => {
+    if (isSessionStarted) {
+      try {
+        await logAction(sessionId, "Select Input Options");
+      } catch (err) {
+        console.log("error logging select action", err);
+      }
+    }
+  };
 
   return (
     <select

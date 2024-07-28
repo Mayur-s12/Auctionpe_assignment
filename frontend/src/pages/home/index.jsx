@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Text from "../../components/Text/index.jsx";
-import { END, START } from "./constants";
+import { ACTION_HEADING, END, START } from "./constants";
 import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 import ToggleButton from "./toggle-button/index.jsx";
 import SearchInput from "./search-action/index.jsx";
@@ -27,7 +27,7 @@ const Home = () => {
           <AccessAlarmsIcon />
         </div>
       </div>
-      <Text className='item-text'>Action Items</Text>
+      <Text className='item-text'>{ACTION_HEADING}</Text>
       <div className='display-action-items'>
         <ToggleButton
           isSessionStarted={isSessionStarted}
