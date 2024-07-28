@@ -12,7 +12,8 @@ import useHome from "./hooks.js";
 import "./index.css";
 
 const Home = () => {
-  const { handleSession, formatTimer, isSessionStarted, timer } = useHome();
+  const { handleSession, formatTimer, isSessionStarted, timer, sessionId } =
+    useHome();
 
   return (
     <div className='home-container'>
@@ -28,11 +29,17 @@ const Home = () => {
       </div>
       <Text className='item-text'>Action Items</Text>
       <div className='display-action-items'>
-        <ToggleButton isSessionStarted={isSessionStarted} />
-        <SearchInput isSessionStarted={isSessionStarted} />
-        <Counter isSessionStarted={isSessionStarted} />
-        <Slider isSessionStarted={isSessionStarted} />
-        <Selector isSessionStarted={isSessionStarted} />
+        <ToggleButton
+          isSessionStarted={isSessionStarted}
+          sessionId={sessionId}
+        />
+        <SearchInput
+          isSessionStarted={isSessionStarted}
+          sessionId={sessionId}
+        />
+        <Counter isSessionStarted={isSessionStarted} sessionId={sessionId} />
+        <Slider isSessionStarted={isSessionStarted} sessionId={sessionId} />
+        <Selector isSessionStarted={isSessionStarted} sessionId={sessionId} />
       </div>
     </div>
   );

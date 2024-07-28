@@ -72,7 +72,7 @@ const useHome = () => {
     return `${minutes}:${seconds}`;
   };
 
-  return { handleSession, formatTimer, isSessionStarted, timer };
+  return { handleSession, formatTimer, isSessionStarted, sessionId, timer };
 };
 
 export default useHome;
