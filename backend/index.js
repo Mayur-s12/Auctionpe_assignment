@@ -12,13 +12,20 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 app.use(express.json());
 
@@ -26,8 +33,6 @@ app.use("/auth", authRoutes);
 app.use("/session", sessionRoutes);
 app.use("/action", actionRoutes);
 app.use("/dashboard", dashboardRoutes);
-
-app.options("*", cors());
 
 app.listen(port, (err) => {
   if (err) {
