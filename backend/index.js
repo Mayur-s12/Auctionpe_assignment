@@ -1,10 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 import actionRoutes from "./routes/actionRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-import cors from "cors";
 
 dotenv.config();
 
@@ -12,15 +12,8 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: "*",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: "Content-Type, Authorization",
-  credentials: true,
-};
+app.use(cors());
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 app.use(express.json());
 
 app.use("/auth", authRoutes);
@@ -30,8 +23,8 @@ app.use("/dashboard", dashboardRoutes);
 
 app.listen(port, (err) => {
   if (err) {
-    console.log(`error starting the server: ${err.message}`);
+    console.log(`Error starting the server: ${err.message}`);
     process.exit(1);
   }
-  console.log(`server running at ${port}`);
+  console.log(`Server running at ${port}`);
 });
