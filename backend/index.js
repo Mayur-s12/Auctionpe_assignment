@@ -12,7 +12,13 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: false,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/auth", authRoutes);
