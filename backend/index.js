@@ -12,12 +12,7 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(
-  cors({
-    origin:
-      "https://auctionpe-assignmentbacend-apr3ty4ea-mayur-s12s-projects.vercel.app",
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
