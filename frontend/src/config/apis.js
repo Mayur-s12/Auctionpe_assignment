@@ -1,7 +1,7 @@
 import axios from "axios";
 import { token } from "../utils";
 
-export const BASE_URL = "http://localhost:5000";
+export const BASE_URL = "https://auctionpe-assignment-backend.onrender.com";
 
 export const logAction = async (sessionId, actionType) => {
   try {
