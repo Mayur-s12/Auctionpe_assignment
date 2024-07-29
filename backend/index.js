@@ -12,7 +12,13 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json());
 
@@ -20,6 +26,8 @@ app.use("/auth", authRoutes);
 app.use("/session", sessionRoutes);
 app.use("/action", actionRoutes);
 app.use("/dashboard", dashboardRoutes);
+
+app.options("*", cors());
 
 app.listen(port, (err) => {
   if (err) {
